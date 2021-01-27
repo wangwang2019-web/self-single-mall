@@ -6,13 +6,12 @@
         <groupId>com.macro.mall</groupId>
         <artifactId>self-single-mall</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.macro.mall</groupId>
-    <artifactId>self-mall-common</artifactId>
+    <artifactId>mall-mbg</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>self-mall-common</name>
+    <name>mall-mbg</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -29,24 +28,17 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <groupId>com.macro.mall</groupId>
+            <artifactId>self-mall-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
 
