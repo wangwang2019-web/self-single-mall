@@ -26,8 +26,8 @@ spring:
         min-idle: 0
 mybatis:
   mapper-locations:
-    - classpath*: dao/*.xml
-    - classpath*: com/**/mapper/*.xml
+    - classpath*:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
 #自定义redis键值
 redis:
   key:
