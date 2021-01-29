@@ -34,4 +34,11 @@ redis:
     prefix:
       otpCode: "member:otpCode"
     expire:
-      otpCode: 60 #秒
+      otpCode: 600 #秒
+
+#登录拦截验证
+member:
+  auth:
+    shouldSkipUrls:
+      - /sso/**
+      - /home/**

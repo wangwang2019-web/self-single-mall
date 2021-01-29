@@ -1,5 +1,7 @@
 package com.macro.mall.service;
 
+import com.macro.mall.domain.Register;
+import com.macro.mall.domain.UmsMember;
 import com.macro.mall.selfmallcommon.exception.BusinessException;
 
 /**
@@ -13,4 +15,8 @@ public interface MemberService {
      * @return
      */
     public String getOtpCode(String telePhone) throws BusinessException;
+
+    public int register(Register register) throws Exception;
+
+    public UmsMember login(String username, String password) throws BusinessException;
 }
