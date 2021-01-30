@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8889
 spring:
   datasource:
     url: jdbc:mysql://192.168.78.200:3306/micromall?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
@@ -40,5 +40,14 @@ redis:
 member:
   auth:
     shouldSkipUrls:
-      - /sso/**
+      - /oos/**
       - /home/**
+#session:
+  #store-type: redis
+
+#jwt config
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mall-member-sercret
+  expiration: 604800 #JWT的超期限时间（60*60*24）
+  tokenHead: Bearer #JWT负载中拿到开头

@@ -1,5 +1,6 @@
 package com.macro.mall.config;
 
+import com.macro.mall.util.JwtKit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,5 +18,9 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public JwtKit jwtKit(){
+        return new JwtKit();
+    }
 
 }

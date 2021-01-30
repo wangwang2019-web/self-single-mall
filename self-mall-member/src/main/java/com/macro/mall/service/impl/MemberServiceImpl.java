@@ -90,6 +90,7 @@ public class MemberServiceImpl implements MemberService {
         BeanUtils.copyProperties(register,umsMember);
         umsMember.setMemberLevelId(4l);
         umsMember.setStatus(1);
+        umsMember.setPassword(passwordEncoder.encode(register.getPassword()));
         int result=0;
         try{
             result = umsMemberMapper.insertSelective(umsMember);
