@@ -4,6 +4,7 @@ import com.macro.mall.config.properties.JwtProperties;
 import com.macro.mall.domain.UmsMember;
 import com.macro.mall.selfmallcommon.exception.BusinessException;
 import io.jsonwebtoken.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Map;
  * @author wangwang
  * @date 2021/1/30 9:41
  */
+@Slf4j
 public class JwtKit {
 
     @Autowired
@@ -24,18 +26,23 @@ public class JwtKit {
      * @param umsMember
      * @return
      */
-    public String generateJwtToken(UmsMember umsMember){
+    public String generateJwtToken(UmsMember umsMember) throws Exception {
         Map<String,Object> claim=new HashMap<>();
         claim.put("sub",umsMember.getUsername());
         claim.put("createdate",new Date());
         claim.put("id",umsMember.getId());
         claim.put("memberLevelId",umsMember.getMemberLevelId());
+        try{
+            return Jwts.builder()
+                    .setClaims(claim)
+                    .setExpiration(new Date(System.currentTimeMillis()+jwtProperties.getExpiration()*1000))
+                    .signWith(SignatureAlgorithm.HS256,jwtProperties.getSecret())
+                    .compact();
+        }catch (Exception e){
+            log.info(e.getMessage());
+            throw new Exception();
+        }
 
-        return Jwts.builder()
-                .setClaims(claim)
-                .setExpiration(new Date(System.currentTimeMillis()+jwtProperties.getExpiration()*1000))
-                .signWith(SignatureAlgorithm.ES256,jwtProperties.getSecret())
-                .compact();
     }
 
     public Claims parseJwtToken(String jwtToken) throws Exception{

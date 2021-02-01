@@ -65,7 +65,7 @@ public class MemberController extends BaseController{
             String token=jwtKit.generateJwtToken(member);
             map.put("tokenHead",jwtProperties.getTokenHead());
             map.put("token",token);
-            return CommonResult.success(null);
+            return CommonResult.success(map);
         }
         return CommonResult.failed();
     }
